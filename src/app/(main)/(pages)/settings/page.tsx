@@ -1,3 +1,4 @@
+import ProfileForm from "@/components/forms/profile-form";
 import React from "react";
 
 type Props = {};
@@ -18,6 +19,7 @@ const Settings = (props: Props) => {
              Add or Update your information
             </p>
         </div>
+        <ProfileForm/>
       </div>
     </div>
   );
