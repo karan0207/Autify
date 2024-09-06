@@ -1,0 +1,9 @@
+{
+    "files.autoSave": "onWindowChange",
+    "editor.fontSize": 18,
+    "editor.cursorStyle": "line-thin",
+    "editor.wordWrap": "on",
+    "editor.smoothScrolling": true,       // Enable smooth scrolling in the editor
+    "editor.cursorSmoothCaretAnimation":"on",  // Enable smooth cursor movement
+    "workbench.list.smoothScrolling": true, // Enable smooth scrolling in the explorer and other listss
+}

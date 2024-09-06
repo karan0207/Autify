@@ -11,10 +11,10 @@ const Navbar = async (props: Props) => {
       <aside className="flex items-center gap-[2px]">
         <p className="text-3xl font-bold">Au</p>
         <Image
-          src="/power.png"
+          src="/lightlogo.png"
           alt="autify"
-          width={35}
-          height={25}
+          width={30}
+          height={35}
           className="shadow-sm"
         />
         <p className="text-3xl font-bold">tify</p>
