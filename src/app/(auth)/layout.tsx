@@ -1,15 +1,13 @@
 import React from 'react'
 
-type Props = {
-    children: React.ReactNode
-}
+type Props = { children: React.ReactNode }
 
-const layout = ({children}: Props) => {
+const Layout = ({ children }: Props) => {
   return (
-    <div className='flex items-center justify-center h-screen w-full'>
-        {children}
+    <div className="flex items-center justify-center h-screen w-full">
+      {children}
     </div>
   )
 }
 
-export default layout
+export default Layout
