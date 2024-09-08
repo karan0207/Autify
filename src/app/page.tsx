@@ -1,3 +1,4 @@
+"use client"
 import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
 import { HeroParallax } from '@/components/global/connect-parallax'
 import { ContainerScroll } from '@/components/global/container-scroll-animation'
@@ -8,11 +9,17 @@ import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
 import { CheckIcon } from 'lucide-react'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(()=>{
+    setIsMobile(window.innerWidth <= 768);
+  },[])
   //WIP: remove fault IMAge for home page
   return (
-    <main className="flex items-center justify-center flex-col">
+    <main className="flex items-center justify-center flex-col overflow-hidden">
       <Navbar />
       <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
@@ -32,12 +39,30 @@ export default function Home() {
                   Automate Your Work With Fuzzie
                 </h1>
               </div>
+            
             }
-          />
+          >
+            {
+              isMobile ? (  <Image
+                src="/wiremap.jpeg"
+                fill
+                alt="bannerImage"
+                className="object-cover border-8 rounded-2xl overflow-hidden"
+              />) : (<Image
+                src="/wiremap.jpeg"
+                width={1000}
+                height={1000}
+                alt="bannerImage"
+                className="object-cover border-8 rounded-2xl overflow-hidden"
+              />)
+            }
+          
+         
+          </ContainerScroll>
         </div>
       </section>
       <InfiniteMovingCards
-        className="md:mt-[18rem] mt-[-100px]"
+        className="md:mt-[28rem] mt-[-100px]"
         items={clients}
         direction="right"
         speed="slow"
@@ -45,7 +70,7 @@ export default function Home() {
       <section>
         <HeroParallax products={products}></HeroParallax>
       </section>
-      <section className="mt-[-500px]">
+      <section className="mt-[-500px] px-4 py-12">
         <LampComponent />
         <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 -mt-72">
           <CardContainer className="inter-var ">
