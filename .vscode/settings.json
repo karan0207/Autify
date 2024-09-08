@@ -1,6 +1,6 @@
 {
     "files.autoSave": "onWindowChange",
-    "editor.fontSize": 18,
+    "editor.fontSize": 14,
     "editor.cursorStyle": "line-thin",
     "editor.wordWrap": "on",
     "editor.smoothScrolling": true,       // Enable smooth scrolling in the editor
