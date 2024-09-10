@@ -21,6 +21,11 @@ const Connections = (props: Props) => {
              return (
                 <ConnectionCard 
                 key={connection.title} 
+                title={connection.title}
+                description={connection.description}
+                icon={connection.image}
+                type={connection.title}
+
                 />
              )
         })}
