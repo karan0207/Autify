@@ -48,12 +48,14 @@ export default function Home() {
                 fill
                 alt="bannerImage"
                 className="object-cover border-8 rounded-2xl overflow-hidden"
+              
               />) : (<Image
                 src="/wiremap.jpeg"
                 width={1000}
                 height={1000}
                 alt="bannerImage"
                 className="object-cover border-8 rounded-2xl overflow-hidden"
+             
               />)
             }
           
@@ -66,6 +68,7 @@ export default function Home() {
         items={clients}
         direction="right"
         speed="slow"
+        
       />
       <section>
         <HeroParallax products={products}></HeroParallax>
