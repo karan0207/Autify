@@ -1,5 +1,6 @@
 import React from 'react'
 import WorkflowButton from './_components/workflow-button'
+import Workflow from './_components/workflow'
 
 type Props = {}
 
@@ -10,7 +11,7 @@ const page = (props: Props) => {
         Workflows
         <WorkflowButton />
        </h1>
-      {/* <Workflows /> */} 
+      <Workflow/>
     </div>
   )
 }
