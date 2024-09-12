@@ -5,9 +5,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {}
+type Props = {
+    name: string
+    description: string
+    id: string
+    publish: boolean | null
+}
 
-const Workflow = (props: Props) => {
+const Workflow = ({name, description, id, publish}: Props) => {
   return (
     <Card className="flex w-full items-center justify-between">
     <CardHeader className="flex flex-col gap-4">
@@ -46,12 +51,12 @@ const Workflow = (props: Props) => {
         htmlFor="airplane-mode"
         className="text-muted-foreground"
       >
-        {/* {publish! ? 'On' : 'Off'}  */} on
+        {publish! ? 'On' : 'Off'} 
       </Label>
       <Switch
         id="airplane-mode"
         // onClick={onPublishFlow}
-        // defaultChecked={publish!}
+        defaultChecked={publish!}
       />
     </div>
   </Card>
