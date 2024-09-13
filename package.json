@@ -27,6 +27,7 @@
     "@uploadcare/react-uploader": "^1.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
     "framer-motion": "^11.5.1",
     "lucide-react": "^0.438.0",
     "next": "14.2.7",
