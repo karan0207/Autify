@@ -3,14 +3,9 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/Theme-provider";
 import {
-  ClerkLoaded,
-  ClerkLoading,
   ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
 } from "@clerk/nextjs";
+
 const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,16 +15,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <ClerkProvider
-    publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
+    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
       <html lang="en">
         <body className={font.className}>
-    
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -38,7 +30,6 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-        
         </body>
       </html>
     </ClerkProvider>
