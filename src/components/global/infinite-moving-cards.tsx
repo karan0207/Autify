@@ -21,88 +21,63 @@ export const InfiniteMovingCards = ({
   className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [duplicatedItems, setDuplicatedItems] = useState(items);
+  const [start, setStart] = useState(false);
 
   useEffect(() => {
-    addAnimation();
-  }, []);
+    // Duplicate the items for animation
+    const duplicatedItemsList = [...items, ...items];
+    setDuplicatedItems(duplicatedItemsList);
+    setStart(true);
+  }, [items]);
 
-  const [start, setStart] = useState(false);
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
+  const getAnimationDirection = () => {
+    return direction === "left" ? "forwards" : "reverse";
+  };
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
-
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
+  const getAnimationDuration = () => {
+    switch (speed) {
+      case "fast":
+        return "20s";
+      case "normal":
+        return "40s";
+      case "slow":
+        return "80s";
+      default:
+        return "40s";
     }
   };
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
-      }
-    }
-  };
-  console.log(items);
+
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] duration-50 transition-all",
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] duration-50 transition-all",
         className
       )}
+      style={{
+        "--animation-direction": getAnimationDirection(),
+        "--animation-duration": getAnimationDuration(),
+      } as React.CSSProperties} // Type assertion to allow custom CSS properties
     >
       <ul
-        ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-10 py-4 w-max flex-nowrap ",
-          start && "animate-scroll ",
+          "flex min-w-full shrink-0 gap-10 py-4 w-max flex-nowrap",
+          start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {duplicatedItems.map((item, idx) => (
           <Image
             width={170}
             height={1}
             src={item.href}
             alt={item.href}
-            className=" relative rounded-2xl  object-contain opacity-50"
-            key={item.href}
+            className="relative rounded-2xl object-contain opacity-50"
+            key={`${item.href}-${idx}`} // Ensure unique key for each item
           />
         ))}
       </ul>
     </div>
   );
 };
-
-
-
-
-
