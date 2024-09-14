@@ -12,11 +12,6 @@ import Image from 'next/image'
 import {  useEffect, useState } from 'react'
 
 
-// const MemoizedNavbar=memo(Navbar);
-// const MemoizedLampComponent=memo(LampComponent);
-// const MemoizedContainerScroll=memo(ContainerScroll);
-// const MemoizedHeroParallax=memo(HeroParallax);
-// const InfiniteMovingCards = lazy(()=>import('@/components/global/infinite-moving-cards').then(mod=>({default:mod.InfiniteMovingCards})));
 
 
 export default function Home() {
@@ -29,7 +24,7 @@ export default function Home() {
       setIsMobile(window.innerWidth <= 768);
   }
   },[])
-  //WIP: remove fault IMAge for home page
+
   return (
     <main className="flex items-center justify-center flex-col overflow-hidden">
       <Navbar />
@@ -81,7 +76,7 @@ export default function Home() {
           items={clients}
           direction="right"
           speed="slow"
-          
+
         />
   
      
@@ -237,7 +232,6 @@ export default function Home() {
     </main>
   )
 }
-
 
 
 

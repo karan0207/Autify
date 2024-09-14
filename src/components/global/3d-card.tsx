@@ -11,6 +11,7 @@ import React, {
   useEffect,
 } from 'react'
 
+// Context to manage mouse enter state
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
 >(undefined)
@@ -29,23 +30,23 @@ export const CardContainer = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect()
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect()
     const x = (e.clientX - left - width / 2) / 25
     const y = (e.clientY - top - height / 2) / 25
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`
   }
 
-  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = () => {
     setIsMouseEntered(true)
-    if (!containerRef.current) return
   }
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return
+  const handleMouseLeave = () => {
     setIsMouseEntered(false)
-    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
+    if (containerRef.current) {
+      containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`
+    }
   }
+
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
@@ -124,8 +125,15 @@ export const CardItem = ({
 
   const handleAnimations = () => {
     if (!ref.current) return
+    const translateXValue = typeof translateX === 'string' ? parseFloat(translateX) : translateX
+    const translateYValue = typeof translateY === 'string' ? parseFloat(translateY) : translateY
+    const translateZValue = typeof translateZ === 'string' ? parseFloat(translateZ) : translateZ
+    const rotateXValue = typeof rotateX === 'string' ? parseFloat(rotateX) : rotateX
+    const rotateYValue = typeof rotateY === 'string' ? parseFloat(rotateY) : rotateY
+    const rotateZValue = typeof rotateZ === 'string' ? parseFloat(rotateZ) : rotateZ
+
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`
+      ref.current.style.transform = `translateX(${translateXValue}px) translateY(${translateYValue}px) translateZ(${translateZValue}px) rotateX(${rotateXValue}deg) rotateY(${rotateYValue}deg) rotateZ(${rotateZValue}deg)`
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`
     }
@@ -142,7 +150,7 @@ export const CardItem = ({
   )
 }
 
-// Create a hook to use the context
+// Custom hook to use the MouseEnter context
 export const useMouseEnter = () => {
   const context = useContext(MouseEnterContext)
   if (context === undefined) {
