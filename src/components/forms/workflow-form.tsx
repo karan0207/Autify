@@ -1,4 +1,4 @@
-"use client"
+
 import { WorkflowFormSchema } from '@/lib/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
@@ -26,6 +26,7 @@ import { Loader2 } from 'lucide-react'
 // import { toast } from 'sonner'
 // import { onCreateWorkflow } from '@/app/(main)/(pages)/workflows/_actions/workflow-connections'
 import { useModal } from '@/providers/modal-provider'
+import { OnCreateWorkflow } from '@/app/(main)/(pages)/workflows/_actions/workflow-connections'
 
 type Props = {
   title?: string
@@ -46,14 +47,14 @@ const Workflowform = ({ subTitle, title }: Props) => {
   const isLoading = form.formState.isLoading
   const router = useRouter()
 
-//   const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
-//     const workflow = await onCreateWorkflow(values.name, values.description)
-//     if (workflow) {
-//       toast.message(workflow.message)
-//       router.refresh()
-//     }
-//     setClose()
-//   }
+  const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
+    const workflow = await OnCreateWorkflow(values.name, values.description)
+    if (workflow) {
+      // toast.message(workflow.message)
+      router.refresh()
+    }
+    setClose()
+  }
 
   return (
     <Card className="w-full max-w-[650px] border-none">

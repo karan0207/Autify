@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client";
+
 
 import { EditUserProfileSchema } from "@/lib/types";
 import { ZIndex } from "@tsparticles/engine";

@@ -1,16 +1,14 @@
-import { div } from 'framer-motion/client'
-import React from 'react'
-
-
+import { div } from "framer-motion/client";
+import React from "react";
 
 const page = () => {
   return (
-    <div className='flex flex-col gap-4 relative'>
-     <h1 className='text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b'>
+    <div className="flex flex-col gap-4 relative">
+      <h1 className="text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b">
         Dashboard
-     </h1>
+      </h1>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

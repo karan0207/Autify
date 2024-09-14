@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { Book, Headphones, Search } from "lucide-react";

@@ -7,15 +7,27 @@ import { LampComponent } from '@/components/global/lamp'
 import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
-import { CheckIcon } from 'lucide-react'
+import { CheckIcon, Loader } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
+
+
+// const MemoizedNavbar=memo(Navbar);
+// const MemoizedLampComponent=memo(LampComponent);
+// const MemoizedContainerScroll=memo(ContainerScroll);
+// const MemoizedHeroParallax=memo(HeroParallax);
+// const InfiniteMovingCards = lazy(()=>import('@/components/global/infinite-moving-cards').then(mod=>({default:mod.InfiniteMovingCards})));
+
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 
+
+
   useEffect(()=>{
-    setIsMobile(window.innerWidth <= 768);
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth <= 768);
+  }
   },[])
   //WIP: remove fault IMAge for home page
   return (
@@ -63,13 +75,16 @@ export default function Home() {
           </ContainerScroll>
         </div>
       </section>
-      <InfiniteMovingCards
-        className="md:mt-[28rem] mt-[-100px]"
-        items={clients}
-        direction="right"
-        speed="slow"
-        
-      />
+     
+        <InfiniteMovingCards 
+          className="md:mt-[28rem] mt-[-100px]"
+          items={clients}
+          direction="right"
+          speed="slow"
+          
+        />
+  
+     
       <section>
         <HeroParallax products={products}></HeroParallax>
       </section>
@@ -222,3 +237,9 @@ export default function Home() {
     </main>
   )
 }
+
+
+
+
+
+
