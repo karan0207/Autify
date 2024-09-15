@@ -10,3 +10,23 @@ export const onDragStart = (
   event.dataTransfer.setData('application/reactflow', nodeType)
   event.dataTransfer.effectAllowed = 'move'
 }
+
+export const onSlackContent = (
+    nodeConnection: ConnectionProviderProps,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    nodeConnection.setSlackNode((prev: any) => ({
+      ...prev,
+      content: event.target.value,
+    }))
+  }
+  
+  export const onDiscordContent = (
+    nodeConnection: ConnectionProviderProps,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    nodeConnection.setDiscordNode((prev: any) => ({
+      ...prev,
+      content: event.target.value,
+    }))
+  }
