@@ -20,8 +20,12 @@ export default function Home() {
 
 
   useEffect(()=>{
+   
     if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth <= 768);
+      // setIsMobile(window.innerWidth <= 768);
+      if(window.innerWidth <= 768){
+        setIsMobile(true)
+      }
   }
   },[])
 
