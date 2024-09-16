@@ -25,6 +25,7 @@
     "@uploadcare/blocks": "^0.50.4",
     "@uploadcare/file-uploader": "^1.6.0",
     "@uploadcare/react-uploader": "^1.0.0",
+    "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",

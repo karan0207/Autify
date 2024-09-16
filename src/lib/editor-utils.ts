@@ -30,3 +30,5 @@ export const onSlackContent = (
       content: event.target.value,
     }))
   }
+
+  
