@@ -3,7 +3,6 @@ import { useEditor } from '@/providers/editor-provider'
 import React, { useMemo } from 'react'
 import { Position, useNodeId } from 'reactflow'
 import EditorCanvasIconHelper from './editor-canvas-card-icon-helper'
-import CustomHandle from './custom-handle'
 import { Badge } from '@/components/ui/badge'
 
 import {
@@ -13,6 +12,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import clsx from 'clsx'
+import CustomHandle from './custom-handle'
 
 type Props = {}
 
