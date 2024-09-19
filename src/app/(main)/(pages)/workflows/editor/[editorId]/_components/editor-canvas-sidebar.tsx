@@ -18,7 +18,7 @@ import {
   onConnections,
   onDragStart,
 } from '@/lib/editor-utils'
-import EditorCanvasIconHelper from './editor-canvas-card-icon-hepler'
+import EditorCanvasIconHelper from './editor-canvas-card-icon-helper'
 import {
   Accordion,
   AccordionContent,
