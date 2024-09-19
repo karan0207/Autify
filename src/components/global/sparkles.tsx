@@ -57,6 +57,8 @@ export const SparklesCore = (props: ParticlesProps) => {
     <motion.div
       animate={controls}
       className={cn('opacity-0', className)}
+      // animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       {init && (
         <Particles
