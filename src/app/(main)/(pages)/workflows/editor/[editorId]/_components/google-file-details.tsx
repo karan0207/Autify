@@ -8,3 +8,7 @@ type Props = {
     title: string
     gFile: any
   }
+
+  const isGoogleFileNotEmpty = (file: any): boolean => {
+    return Object.keys(file).length > 0 && file.kind !== ''
+  }
