@@ -1,13 +1,10 @@
 'use server'
 import { Option } from '@/components/ui/multiple-selector'
 import { db } from '@/lib/db'
-import { useAuth, useUser } from '@clerk/nextjs'
-import { useEffect } from 'react'
+import { auth, currentUser } from '@clerk/nextjs/server'
 
-export const GetGoogleListener = async () => {
- 
-    const { userId } = useAuth()
- 
+export const getGoogleListener = async () => {
+  const { userId } = auth()
 
   if (userId) {
     const listener = await db.user.findUnique({
@@ -138,9 +135,8 @@ export const onCreateNodeTemplate = async (
   }
 }
 
-export const OnGetWorkflows = async () => {
-  
-  const { user } = useUser()
+export const onGetWorkflows = async () => {
+  const user = await currentUser()
   if (user) {
     const workflow = await db.workflows.findMany({
       where: {
@@ -152,8 +148,8 @@ export const OnGetWorkflows = async () => {
   }
 }
 
-export const OnCreateWorkflow = async (name: string, description: string) => {
-  const { user } = useUser()
+export const onCreateWorkflow = async (name: string, description: string) => {
+  const user = await currentUser()
 
   if (user) {
     //create new workflow

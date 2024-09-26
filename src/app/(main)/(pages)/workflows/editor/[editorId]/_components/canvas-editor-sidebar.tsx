@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { EditorCanvasTypes, EditorNodeType } from '@/lib/types'
 import { useNodeConnections } from '@/providers/connections-provider'
@@ -26,8 +27,10 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import RenderConnectionAccordion from './render-connection-accordion'
-import RenderOutputAccordion from './render-output-accordian'
+// import RenderOutputAccordion from './render-output-accordian'
 import { useFuzzieStore } from '@/store'
+import RenderOutputAccordion from './render-output-accordion'
+import EditorCanvasIconHelper from './editor-canvas-card-icon-helper'
 
 type Props = {
   nodes: EditorNodeType[]

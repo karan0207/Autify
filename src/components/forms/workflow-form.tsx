@@ -1,4 +1,3 @@
-
 import { WorkflowFormSchema } from '@/lib/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
@@ -23,10 +22,9 @@ import {
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Loader2 } from 'lucide-react'
-// import { toast } from 'sonner'
-// import { onCreateWorkflow } from '@/app/(main)/(pages)/workflows/_actions/workflow-connections'
+import { toast } from 'sonner'
+import { onCreateWorkflow } from '@/app/(main)/(pages)/workflows/_actions/workflow-connections'
 import { useModal } from '@/providers/modal-provider'
-import { OnCreateWorkflow } from '@/app/(main)/(pages)/workflows/_actions/workflow-connections'
 
 type Props = {
   title?: string
@@ -48,9 +46,9 @@ const Workflowform = ({ subTitle, title }: Props) => {
   const router = useRouter()
 
   const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
-    const workflow = await OnCreateWorkflow(values.name, values.description)
+    const workflow = await onCreateWorkflow(values.name, values.description)
     if (workflow) {
-      // toast.message(workflow.message)
+      toast.message(workflow.message)
       router.refresh()
     }
     setClose()
@@ -67,7 +65,7 @@ const Workflowform = ({ subTitle, title }: Props) => {
       <CardContent>
         <Form {...form}>
           <form
-            // onSubmit={form.handleSubmit(handleSubmit)}
+            onSubmit={form.handleSubmit(handleSubmit)}
             className="flex flex-col gap-4 text-left"
           >
             <FormField

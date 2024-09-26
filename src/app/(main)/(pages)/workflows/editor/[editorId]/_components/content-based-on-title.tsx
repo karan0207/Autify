@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { AccordionContent } from '@/components/ui/accordion'
 import { ConnectionProviderProps } from '@/providers/connections-provider'
 import { EditorState } from '@/providers/editor-provider'
