@@ -22,7 +22,6 @@ const WorkflowButton = (props: Props) => {
         <Workflowform />
       </CustomModal>
     )
-    console.log('clicked')
   }
 
   return (

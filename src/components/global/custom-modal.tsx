@@ -25,7 +25,7 @@ const CustomModal = ({ children, subheading, title, defaultOpen }: Props) => {
   const handleClose = () => setClose()
 
   return (
-    <div className='z-55'>
+   
     <Drawer
       open={isOpen}
       onClose={handleClose}
@@ -51,7 +51,7 @@ const CustomModal = ({ children, subheading, title, defaultOpen }: Props) => {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-    </div>
+
   )
 }
 
