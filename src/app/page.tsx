@@ -49,7 +49,7 @@ export default function Home() {
             {/* Responsive Image */}
             {isMobile ? (
               <Image
-                src="/wiremap.jpeg"
+                src="/main.jpeg"
                 fill
                 alt="bannerImage"
                 className="object-cover border-8 rounded-2xl overflow-hidden"

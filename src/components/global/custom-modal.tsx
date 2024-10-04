@@ -1,17 +1,7 @@
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '@/components/ui/drawer'
-import { useModal } from '@/providers/modal-provider'
+import { useModal } from "@/providers/modal-provider"
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "../ui/drawer"
+import { Button } from "../ui/button"
 
-import React from 'react'
-import { Button } from '../ui/button'
 
 type Props = {
   title: string
@@ -25,7 +15,6 @@ const CustomModal = ({ children, subheading, title, defaultOpen }: Props) => {
   const handleClose = () => setClose()
 
   return (
-    <div className='z-55'>
     <Drawer
       open={isOpen}
       onClose={handleClose}
@@ -51,7 +40,6 @@ const CustomModal = ({ children, subheading, title, defaultOpen }: Props) => {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-    </div>
   )
 }
 

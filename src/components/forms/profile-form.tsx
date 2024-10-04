@@ -60,10 +60,11 @@ const ProfileForm = ({user,onUpdate}: Props) => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-lg">User full name</FormLabel>
+              <FormLabel className="text-lg" htmlFor="name">User full name</FormLabel>
               <FormControl>
                 <Input
                   {...field}
+                  id="name"  // Added id attribute
                   placeholder="Name"
                 />
               </FormControl>
@@ -76,10 +77,11 @@ const ProfileForm = ({user,onUpdate}: Props) => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-lg">Email</FormLabel>
+              <FormLabel className="text-lg" htmlFor="email">Email</FormLabel>
               <FormControl>
                 <Input
                   {...field}
+                  id="email" // Added id attribute
                   disabled={true}
                   placeholder="Email"
                   type="email"

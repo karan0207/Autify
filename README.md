@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Autify
 
-## Getting Started
+![Autify Logo or Screenshot](/public/mainautify.png) <!-- Add your project image link here -->
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Autify** is a SaaS (Software as a Service) solution designed to automate business workflows. With Autify, users can seamlessly integrate various platforms such as Notion, Slack, Discord, and Google Drive, enabling them to manage all their workflows from a single, modern dashboard. The application features a user-friendly UI with React Flow connectors that allow users to visualize and connect multiple workflows efficiently.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Multi-Platform Integration**: Connect with popular platforms including Notion, Slack, Discord, and Google Drive.
+- **Unified Dashboard**: Manage all workflows from a single dashboard, providing a comprehensive view of your tasks and projects.
+- **Modern UI**: Experience a sleek and intuitive user interface designed for ease of use.
+- **React Flow Connectors**: Utilize React Flow to visually map and connect workflows, enhancing productivity and organization.
+- **Workflow Tabs**: Manage multiple workflows easily by utilizing tabbed navigation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tech Stack
 
-## Learn More
+Autify is built with a modern tech stack, including:
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: 
+  - **Next.js**: A powerful React framework for server-side rendering and generating static websites.
+  - **React**: A JavaScript library for building user interfaces.
+  - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript, providing improved developer experience and error checking.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **UI Components**:
+  - **Shad Cn**: A library of unstyled, accessible UI components for building high-quality design systems.
+  - **Framer Motion**: A library for animations and transitions in React applications.
+  - **Tailwind CSS**: A utility-first CSS framework for designing responsive layouts.
+  
+- **Backend**:
+  - **Prisma**: An ORM for Node.js and TypeScript that makes it easy to interact with your database.
+  - **Google APIs**: For integrating Google services.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **State Management**:
+  - **Zustand**: A minimal state management library for React.
 
-## Deploy on Vercel
+- **File Uploading**:
+  - **Uploadcare**: A powerful file uploading service that supports various file sources.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To get started with Autify, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/autify.git
+   cd autify
+   npm i
+   npm run dev

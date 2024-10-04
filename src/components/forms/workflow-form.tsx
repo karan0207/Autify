@@ -74,9 +74,10 @@ const Workflowform = ({ subTitle, title }: Props) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel htmlFor="name">Name</FormLabel>
                   <FormControl>
                     <Input
+                      id="name"  // Added id attribute
                       {...field}
                       placeholder="Name"
                     />
@@ -91,9 +92,10 @@ const Workflowform = ({ subTitle, title }: Props) => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel htmlFor="description">Description</FormLabel>
                   <FormControl>
                     <Input
+                      id="description"  // Added id attribute
                       placeholder="Description"
                       {...field}
                     />

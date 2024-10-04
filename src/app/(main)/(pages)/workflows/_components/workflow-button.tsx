@@ -1,11 +1,11 @@
 'use client'
-import Workflowform from '@/components/forms/workflow-form'
-import CustomModal from '@/components/global/custom-modal'
-import { Button } from '@/components/ui/button'
-// import { useBilling } from '@/providers/billing-provider'
-import { useModal } from '@/providers/modal-provider'
-import { Plus } from 'lucide-react'
-import React from 'react'
+
+import Workflowform from "@/components/forms/workflow-form"
+import CustomModal from "@/components/global/custom-modal"
+import { Button } from "@/components/ui/button"
+import { useModal } from "@/providers/modal-provider"
+import { Plus } from "lucide-react"
+
 
 type Props = {}
 
@@ -22,19 +22,11 @@ const WorkflowButton = (props: Props) => {
         <Workflowform />
       </CustomModal>
     )
-    console.log('clicked')
   }
 
   return (
     <Button
       size={'icon'}
-      // {...(credits !== '0'
-      //   ? {
-      //       onClick: handleClick,
-      //     }
-      //   : {
-      //       disabled: true,
-      //     })}
       onClick={handleClick}
     >
       <Plus />
