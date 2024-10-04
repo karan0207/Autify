@@ -1,20 +1,9 @@
 'use client'
-import React from 'react'
-import {
-  Calendar,
-  CircuitBoard,
-  Database,
-  GitBranch,
-  HardDrive,
-  Mail,
-  MousePointerClickIcon,
-  Plus,
-  Slack,
-  Timer,
-  Webhook,
-  Zap,
-} from 'lucide-react'
-import { EditorCanvasTypes } from '@/lib/types'
+
+import { EditorCanvasTypes } from "@/lib/types"
+import { Calendar, CircuitBoard, Database, GitBranch, HardDrive, Mail, MousePointerClickIcon, Timer, Webhook, Zap} from "lucide-react"
+import { FaSlack } from "react-icons/fa";
+
 
 type Props = { type: EditorCanvasTypes }
 
@@ -43,7 +32,7 @@ const EditorCanvasIconHelper = ({ type }: Props) => {
       )
     case 'Slack':
       return (
-        <Slack
+        <FaSlack
           className="flex-shrink-0"
           size={30}
         />

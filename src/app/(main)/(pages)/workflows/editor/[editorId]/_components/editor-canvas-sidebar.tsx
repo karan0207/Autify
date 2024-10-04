@@ -1,35 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
-import { EditorCanvasTypes, EditorNodeType } from '@/lib/types'
-import { useNodeConnections } from '@/providers/connections-provider'
-import { useEditor } from '@/providers/editor-provider'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
-import React, { useEffect } from 'react'
-import { Separator } from '@/components/ui/separator'
-import { CONNECTIONS, EditorCanvasDefaultCardTypes } from '@/lib/constant'
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  fetchBotSlackChannels,
-  onConnections,
-  onDragStart,
-} from '@/lib/editor-utils'
-import EditorCanvasIconHelper from './editor-canvas-card-icon-helper'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import RenderConnectionAccordion from './render-connection-accordion'
-// import RenderOutputAccordion from './render-output-accordian'
-import { useFuzzieStore } from '@/store'
-import RenderOutputAccordion from './render-output-accordion'
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CONNECTIONS, EditorCanvasDefaultCardTypes } from "@/lib/constant"
+import { fetchBotSlackChannels, onConnections, onDragStart } from "@/lib/editor-utils"
+import { EditorCanvasTypes, EditorNodeType } from "@/lib/types"
+import { useNodeConnections } from "@/providers/connections-provider"
+import { useEditor } from "@/providers/editor-provider"
+import { useFuzzieStore } from "@/store"
+import { useEffect } from "react"
+import EditorCanvasIconHelper from "./editor-canvas-card-icon-helper"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import RenderConnectionAccordion from "./render-connection-accordion"
+import RenderOutputAccordion from "./render-output-accordion"
 
 type Props = {
   nodes: EditorNodeType[]

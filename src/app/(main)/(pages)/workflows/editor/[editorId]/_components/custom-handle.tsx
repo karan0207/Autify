@@ -1,6 +1,7 @@
-import { useEditor } from '@/providers/editor-provider'
-import React, { CSSProperties } from 'react'
-import { Handle, HandleProps, useStore } from 'reactflow'
+import { useEditor } from "@/providers/editor-provider"
+import { CSSProperties } from "react"
+import { Handle, HandleProps } from "reactflow"
+
 
 type Props = HandleProps & { style?: CSSProperties }
 
