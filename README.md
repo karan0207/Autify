@@ -1,6 +1,6 @@
 # Autify
 
-![Autify Logo or Screenshot](/public/mainautify.png) <!-- Add your project image link here -->
+![Autify Logo or Screenshot](/public/autifyhome.png) <!-- Add your project image link here -->
 
 ## Overview
 
