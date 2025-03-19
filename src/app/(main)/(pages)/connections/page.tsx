@@ -2,12 +2,12 @@ import { CONNECTIONS } from '@/lib/constant'
 import React from 'react'
 import ConnectionCard from './_components/connection-card'
 import { currentUser } from '@clerk/nextjs/server'
-import { onDiscordConnect } from './_actions/discord-connection'
-import { onNotionConnect } from './_actions/notion-connection'
-import { onSlackConnect } from './_actions/slack-connection'
-import { getUserData } from './_actions/get-user'
+import { onDiscordConnect } from './(pastactions)/discord-connection'
+import { onNotionConnect } from './(pastactions)/notion-connection'
+import { onSlackConnect } from './(pastactions)/slack-connection'
+import { getUserData } from './(pastactions)/get-user'
 
-type Props = {
+type Props = { 
   searchParams?: { [key: string]: string | undefined }
 }
 

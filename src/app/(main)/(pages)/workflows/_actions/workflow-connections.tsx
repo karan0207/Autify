@@ -31,15 +31,14 @@ export const onFlowPublish = async (workflowId: string, state: boolean) => {
     },
   })
 
-  if (published.publish) return 'Workflow published'
-  return 'Workflow unpublished'
+  return published.publish ? 'Workflow published' : 'Workflow unpublished'
 }
 
 export const onCreateNodeTemplate = async (
   content: string,
   type: string,
   workflowId: string,
-  channels?: Option[],
+  channels: Option[] = [], // Ensure channels has a default value
   accessToken?: string,
   notionDbId?: string
 ) => {
@@ -52,11 +51,9 @@ export const onCreateNodeTemplate = async (
         discordTemplate: content,
       },
     })
-
-    if (response) {
-      return 'Discord template saved'
-    }
+    return response ? 'Discord template saved' : 'Error saving Discord template'
   }
+
   if (type === 'Slack') {
     const response = await db.workflows.update({
       where: {
@@ -79,42 +76,38 @@ export const onCreateNodeTemplate = async (
       })
 
       if (channelList) {
-        //remove duplicates before insert
-        const NonDuplicated = channelList.slackChannels.filter(
-          (channel) => channel !== channels![0].value
+        // Remove duplicates before insert
+        const nonDuplicated = channelList.slackChannels.filter(
+          (channel) => !channels?.some((c) => c?.value === channel)
         )
 
-        NonDuplicated!
-          .map((channel) => channel)
-          .forEach(async (channel) => {
-            await db.workflows.update({
-              where: {
-                id: workflowId,
-              },
-              data: {
-                slackChannels: {
-                  push: channel,
-                },
-              },
-            })
-          })
-
-        return 'Slack template saved'
-      }
-      channels!
-        .map((channel) => channel.value)
-        .forEach(async (channel) => {
+        // Insert non-duplicated channels
+        for (const channel of nonDuplicated) {
           await db.workflows.update({
-            where: {
-              id: workflowId,
-            },
+            where: { id: workflowId },
             data: {
               slackChannels: {
                 push: channel,
               },
             },
           })
+        }
+
+        return 'Slack template saved'
+      }
+
+      // Insert new channels
+      for (const channel of channels) {
+        await db.workflows.update({
+          where: { id: workflowId },
+          data: {
+            slackChannels: {
+              push: channel.value,
+            },
+          },
         })
+      }
+
       return 'Slack template saved'
     }
   }
@@ -131,20 +124,19 @@ export const onCreateNodeTemplate = async (
       },
     })
 
-    if (response) return 'Notion template saved'
+    return response ? 'Notion template saved' : 'Error saving Notion template'
   }
 }
 
 export const onGetWorkflows = async () => {
   const user = await currentUser()
   if (user) {
-    const workflow = await db.workflows.findMany({
+    const workflows = await db.workflows.findMany({
       where: {
         userId: user.id,
       },
     })
-
-    if (workflow) return workflow
+    return workflows ?? []
   }
 }
 
@@ -152,7 +144,7 @@ export const onCreateWorkflow = async (name: string, description: string) => {
   const user = await currentUser()
 
   if (user) {
-    //create new workflow
+    // Create new workflow
     const workflow = await db.workflows.create({
       data: {
         userId: user.id,
@@ -161,8 +153,7 @@ export const onCreateWorkflow = async (name: string, description: string) => {
       },
     })
 
-    if (workflow) return { message: 'workflow created' }
-    return { message: 'Oops! try again' }
+    return workflow ? { message: 'Workflow created' } : { message: 'Oops! try again' }
   }
 }
 
@@ -176,5 +167,5 @@ export const onGetNodesEdges = async (flowId: string) => {
       edges: true,
     },
   })
-  if (nodesEdges?.nodes && nodesEdges?.edges) return nodesEdges
+  return nodesEdges ?? { nodes: [], edges: [] }
 }

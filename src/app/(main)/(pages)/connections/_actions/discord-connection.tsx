@@ -1,7 +1,7 @@
 'use server'
 
 import { db } from '@/lib/db'
-import { currentUser } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs'
 import axios from 'axios'
 
 export const onDiscordConnect = async (
@@ -91,34 +91,32 @@ export const onDiscordConnect = async (
   }
 }
 
-
 export const getDiscordConnectionUrl = async () => {
-    const user = await currentUser()
-    if (user) {
-      const webhook = await db.discordWebhook.findFirst({
-        where: {
-          userId: user.id,
-        },
-        select: {
-          url: true,
-          name: true,
-          guildName: true,
-        },
-      })
-  
-      return webhook
-    }
-  }
+  const user = await currentUser()
+  if (user) {
+    const webhook = await db.discordWebhook.findFirst({
+      where: {
+        userId: user.id,
+      },
+      select: {
+        url: true,
+        name: true,
+        guildName: true,
+      },
+    })
 
-
-  export const postContentToWebHook = async (content: string, url: string) => {
-    console.log(content)
-    if (content != '') {
-      const posted = await axios.post(url, { content })
-      if (posted) {
-        return { message: 'success' }
-      }
-      return { message: 'failed request' }
-    }
-    return { message: 'String empty' }
+    return webhook
   }
+}
+
+export const postContentToWebHook = async (content: string, url: string) => {
+  console.log(content)
+  if (content != '') {
+    const posted = await axios.post(url, { content })
+    if (posted) {
+      return { message: 'success' }
+    }
+    return { message: 'failed request' }
+  }
+  return { message: 'String empty' }
+}
