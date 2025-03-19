@@ -1,6 +1,8 @@
 # Autify
 
-![Autify Logo or Screenshot](/public/autifyhome.png) <!-- Add your project image link here -->
+
+[![Autify Demo](/public/autifyhome.png)](https://youtu.be/iSl9PhMZG4Y)
+
 
 ## Overview
 

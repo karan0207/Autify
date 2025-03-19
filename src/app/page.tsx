@@ -37,7 +37,7 @@ export default function Home() {
                   className="p-8 mb-8 text-2xl w-fit sm:w-fit border-t-2 rounded-full border-[#4D4D4D] bg-[#1F1F1F] hover:bg-white group transition-all flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-neutral-500 duration-500"
                 >
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 to-neutral-600 font-sans group-hover:bg-gradient-to-r group-hover:from-black group-hover:to-black">
-                    Start For Free Today
+                    Get Started
                   </span>
                 </Button>
                 <h1 className="text-4xl md:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
@@ -56,7 +56,7 @@ export default function Home() {
               />
             ) : (
               <Image
-                src="/wiremap.jpeg"
+                src="/main.jpeg"
                 width={1000}
                 height={1000}
                 alt="bannerImage"

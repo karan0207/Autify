@@ -1,10 +1,8 @@
-import { db } from "@/lib/db"
-import { auth, clerkClient } from "@clerk/nextjs/server"
-import { google } from "googleapis"
-import { NextResponse } from "next/server"
+import { google } from 'googleapis'
+import { auth, clerkClient } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
 import { v4 as uuidv4 } from 'uuid'
-
-
+import { db } from '@/lib/db'
 
 export async function GET() {
   const oauth2Client = new google.auth.OAuth2(
@@ -23,12 +21,7 @@ export async function GET() {
     'oauth_google'
   )
 
-  // const accessToken = clerkResponse[0]?.token
-  const accessToken = clerkResponse.data[0]?.token
-  if (!accessToken) {
-    return NextResponse.json({ message: 'Access token not found' })
-  }
-
+  const accessToken = clerkResponse[0]?.token
   oauth2Client.setCredentials({
     access_token: accessToken,
   })

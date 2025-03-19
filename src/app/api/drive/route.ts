@@ -21,10 +21,7 @@ export async function GET() {
     'oauth_google'
   )
 
-  const accessToken = clerkResponse.data[0]?.token 
-  if (!accessToken) {
-    return NextResponse.json({ message: 'Access token not found' }, { status: 401 })
-  }
+  const accessToken = clerkResponse[0].token
   oauth2Client.setCredentials({
     access_token: accessToken,
   })
@@ -67,3 +64,5 @@ export async function GET() {
     )
   }
 }
+
+
